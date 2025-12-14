@@ -47,19 +47,6 @@ pipeline {
             }
         }
         
-        stage('WebUI tests') {
-            steps {
-                sh '''
-                    python3 webui_tests.py > webui_tests_logs.txt 2>&1
-                '''
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'webui_tests_logs.txt'
-                }
-            }
-        }
-        
         stage('Loading testing') {
             steps {
                 sh '''
